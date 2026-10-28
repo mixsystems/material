@@ -7,7 +7,7 @@ import { NavigationEnd, Router, RouterLink, RouterLinkWithHref } from '@angular/
  * @docs-private
  */
 export class RouterActiveDetector {
-    private onDestroy$: Subject<any> = new Subject();
+    private onDestroy$: Subject<void> = new Subject();
 
     constructor(
             private component: {isRouterActive: () => boolean, setRouterActive: (a: boolean) => void},

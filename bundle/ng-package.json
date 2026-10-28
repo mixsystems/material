@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "dist",
+  "assets": [
+    "LICENSE.txt",
+    "NOTICE.txt"
+  ],
+  "lib": {
+    "entryFile": "src/material.module.ts"
+  },
+  "allowedNonPeerDependencies": [
+    "material-components-web",
+    "focus-trap"
+  ]
+}

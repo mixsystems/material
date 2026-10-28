@@ -26,6 +26,7 @@ interface MdcLinearProgressFoundationInterface {
  * DOM children.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcLinearProgress]'
 })
 export class MdcLinearProgressDirective implements AfterContentInit, OnDestroy {

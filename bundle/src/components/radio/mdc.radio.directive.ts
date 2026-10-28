@@ -12,6 +12,7 @@ import { MdcEventRegistry } from '../../utils/mdc.event.registry';
  * Directive for the input element of an <code>MdcRadioDirective</code>.
  */
 @Directive({
+    standalone: false,
     selector: 'input[mdcRadioInput][type=radio]',
     providers: [{provide: AbstractMdcInput, useExisting: forwardRef(() => MdcRadioInputDirective) }]
 })
@@ -59,6 +60,7 @@ export class MdcRadioInputDirective extends AbstractMdcInput {
  * <a href="/material/components/form-field">mdcFormField</a>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcRadio]'
 })
 export class MdcRadioDirective extends AbstractMdcRipple implements AfterContentInit, OnDestroy {

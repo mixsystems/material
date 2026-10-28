@@ -14,6 +14,7 @@ import { MdcEventRegistry } from '../../utils/mdc.event.registry';
  * or icon on top of the background image. 
  */
 @Directive({
+    standalone: false,
     selector: '[mdcCardMedia]',
 })
 export class MdcCardMediaDirective {
@@ -50,6 +51,7 @@ export class MdcCardMediaDirective {
  * creates an absolutely positioned box the same size as the media area.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcCardMediaContent]'
 })
 export class MdcCardMediaContentDirective {
@@ -64,6 +66,7 @@ export class MdcCardMediaContentDirective {
  * This directive should be placed inside an <code>MdcCardActionsDirective</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcCardActionButtons]'
 })
 export class MdcCardActionButtonsDirective {
@@ -78,6 +81,7 @@ export class MdcCardActionButtonsDirective {
  * This directive should be placed inside an <code>MdcCardActionsDirective</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcCardActionIcons]'
 })
 export class MdcCardActionIconsDirective {
@@ -93,6 +97,7 @@ export class MdcCardActionIconsDirective {
  * <code>mdcCardActionButtons</code>, and <code>mdcCardActionIcons</code> directives.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcCardActions]',
 })
 export class MdcCardActionsDirective implements AfterContentInit {
@@ -153,6 +158,7 @@ export class MdcCardActionsDirective implements AfterContentInit {
  * Only applicable to cards that have a primary action that the main surface should trigger.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcCardPrimaryAction]',
 })
 export class MdcCardPrimaryActionDirective extends AbstractMdcRipple implements AfterContentInit, OnDestroy {
@@ -176,6 +182,7 @@ export class MdcCardPrimaryActionDirective extends AbstractMdcRipple implements 
  * <code>MdcCardMediaDirective</code>, <code>MdcCardActionsDirective</code>
  */
 @Directive({
+    standalone: false,
     selector: '[mdcCard]'
 })
 export class MdcCardDirective {

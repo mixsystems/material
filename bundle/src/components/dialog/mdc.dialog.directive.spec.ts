@@ -1,6 +1,6 @@
 import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FOCUS_TRAP_DIRECTIVES } from '../focus-trap/mdc.focus-trap.directive';
 import { DIALOG_DIRECTIVES, MdcDialogDirective, MdcDialogBodyDirective } from './mdc.dialog.directive';
 import { MdcButtonDirective } from '../button/mdc.button.directive';
@@ -27,6 +27,8 @@ const templateWithDialog = `
 
 describe('MdcDialogDirective', () => {
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: templateWithDialog
     })
     class TestComponent {
@@ -50,15 +52,15 @@ describe('MdcDialogDirective', () => {
         const cancel = fixture.nativeElement.querySelector('#cancel');
         const accept = fixture.nativeElement.querySelector('#accept');
         
-        expect(dialog.classList.contains('mdc-dialog--open')).toBe(false, 'dialog must be in closed state');
+        expect(dialog.classList.contains('mdc-dialog--open'), 'dialog must be in closed state').toBe(false);
         button.click();
-        expect(dialog.classList.contains('mdc-dialog--open')).toBe(true, 'dialog must be in opened state');
+        expect(dialog.classList.contains('mdc-dialog--open'), 'dialog must be in opened state').toBe(true);
         cancel.click();
-        expect(dialog.classList.contains('mdc-dialog--open')).toBe(false, 'dialog must be in closed state');
+        expect(dialog.classList.contains('mdc-dialog--open'), 'dialog must be in closed state').toBe(false);
         button.click();
-        expect(dialog.classList.contains('mdc-dialog--open')).toBe(true, 'dialog must be in opened state');
+        expect(dialog.classList.contains('mdc-dialog--open'), 'dialog must be in opened state').toBe(true);
         accept.click();
-        expect(dialog.classList.contains('mdc-dialog--open')).toBe(false, 'dialog must be in closed state');
+        expect(dialog.classList.contains('mdc-dialog--open'), 'dialog must be in closed state').toBe(false);
     }));
 
     it('should trap focus to the dialog when opened', (() => {
@@ -66,7 +68,7 @@ describe('MdcDialogDirective', () => {
         const button = fixture.nativeElement.querySelector('#open');
         const dialog = fixture.nativeElement.querySelector('#dialog');
         const accept = fixture.nativeElement.querySelector('#accept');
-        expect(dialog.classList.contains('mdc-dialog--open')).toBe(false, 'dialog must be in closed state');
+        expect(dialog.classList.contains('mdc-dialog--open'), 'dialog must be in closed state').toBe(false);
         button.click();
         // focusTrap is activated on animation 'transitionend', so simulate that event
         //  (as tick() and friends won't wait for it):

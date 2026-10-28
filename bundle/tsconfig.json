@@ -1,8 +1,4 @@
 {
   "extends": "./tsconfig-base.json",
-  "include": [
-    "node_modules/@types",
-    "src/**/*.ts",
-    "karma.conf.ts"
-  ]
+  "include": ["src/**/*.ts"]
 }

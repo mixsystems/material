@@ -1,11 +1,13 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MdcElevationDirective } from './mdc.elevation.directive';
 import { booleanAttributeStyleTest } from '../../testutils/page.test';
 
 describe('MdcElevationDirective', () => {
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: `
           <div id="el1" [mdcElevation]="elevation" [animateTransition]="animate">elevated</div>
         `
@@ -74,6 +76,8 @@ describe('MdcElevationDirective', () => {
 
     it('should have an elevation of 1 if not initialized with a value', (() => {
         @Component({
+            standalone: false,
+            changeDetection: ChangeDetectionStrategy.Eager,
             template: '<div id="el1" mdcElevation>elevated</div>'
         })
         class TestComponent {}
@@ -93,6 +97,6 @@ describe('MdcElevationDirective', () => {
         testComponent.elevation = input;
         fixture.detectChanges();
         expect(directive.mdcElevation).toBe(elevation);
-        expect(element.classList).toContain(style, 'value: ' + JSON.stringify(elevation));
+        expect(element.classList, 'value: ' + JSON.stringify(elevation)).toContain(style);
     }
 });

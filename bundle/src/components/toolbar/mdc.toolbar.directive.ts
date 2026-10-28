@@ -16,6 +16,7 @@ import { MdcEventRegistry } from '../../utils/mdc.event.registry';
  * the page.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcToolbarRow]'
 })
 export class MdcToolbarRowDirective {
@@ -31,6 +32,7 @@ export class MdcToolbarRowDirective {
  * Multiple sections, with different alignment options, are allowed per row.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcToolbarSection]'
 })
 export class MdcToolbarSectionDirective {
@@ -82,6 +84,7 @@ export class MdcToolbarSectionDirective {
  * The directive should be a child of an <code>MdcToolbarSectionDirective</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcToolbarTitle]'
 })
 export class MdcToolbarTitleDirective {
@@ -98,6 +101,7 @@ export class MdcToolbarTitleDirective {
  * The directive should be a child of an <code>MdcToolbarSectionDirective</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcToolbarIcon]'
 })
 export class MdcToolbarIcon {
@@ -113,6 +117,7 @@ export class MdcToolbarIcon {
  * <code>MdcToolbarIcon</code> instead.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcToolbarMenuIcon]'
 })
 export class MdcToolbarMenuIcon {
@@ -130,6 +135,7 @@ export class MdcToolbarMenuIcon {
  * can be adjusted based on the style of the toolbar, and the scroll of the content.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcToolbarFixedAdjust]',
     exportAs: 'mdcFixedAdjust'
 })
@@ -145,6 +151,7 @@ export class MdcToolbarFixedAdjustDirective {
  * embedded inside <code>MdcToolbarRowDirective</code> elements.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcToolbar]'
 })
 export class MdcToolbarDirective implements AfterViewInit, OnDestroy {

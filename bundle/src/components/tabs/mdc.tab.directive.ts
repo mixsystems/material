@@ -29,6 +29,7 @@ export interface MdcTabChange {
  * or <code>mdcTabRouter</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTabIcon]'
 })
 export class MdcTabIconDirective {
@@ -41,12 +42,14 @@ export class MdcTabIconDirective {
  * to a preceding <code>mdcTabIcon</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTabIconText]'
 })
 export class MdcTabIconTextDirective {
     @HostBinding('class.mdc-tab__icon-text') _hostClass = true;
 }
 
+@Directive()
 export class AbstractMdcTabDirective extends AbstractMdcRipple implements OnDestroy, AfterContentInit {
     @HostBinding('class.mdc-tab') _hostClass = true;
     @ContentChild(MdcTabIconDirective) _mdcTabIcon: MdcTabIconDirective;
@@ -99,6 +102,7 @@ export class AbstractMdcTabDirective extends AbstractMdcRipple implements OnDest
  * Directive for a tab. This directive must be used as a child of <code>mdcTabBar</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTab]',
     providers: [{provide: AbstractMdcTabDirective, useExisting: forwardRef(() => MdcTabDirective) }]
 })

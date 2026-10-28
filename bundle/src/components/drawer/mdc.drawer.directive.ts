@@ -15,6 +15,7 @@ import { MdcEventRegistry } from '../../utils/mdc.event.registry';
  * This is useful for visual alignment and consistency. Note that you can place content inside the toolbar spacer.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcDrawerToolbarSpacer]',
     providers: [{provide: AbstractDrawerElement, useExisting: forwardRef(() => MdcDrawerToolbarSpacerDirective) }]
 })
@@ -35,6 +36,7 @@ export class MdcDrawerToolbarSpacerDirective extends AbstractDrawerElement {
  * <code>mdcDrawerHeaderContent</code> directive.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcDrawerHeader]',
     providers: [{provide: AbstractDrawerElement, useExisting: forwardRef(() => MdcDrawerHeaderDirective) }]
 })
@@ -52,6 +54,7 @@ export class MdcDrawerHeaderDirective extends AbstractDrawerElement {
  * aligned.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcDrawerHeaderContent]',
     providers: [{provide: AbstractDrawerElement, useExisting: forwardRef(() => MdcDrawerHeaderContentDirective) }]
 })
@@ -68,6 +71,7 @@ export class MdcDrawerHeaderContentDirective extends AbstractDrawerElement {
  * or <code>mdcListGroup</code> directive to the drawer content (see the examples).
  */
 @Directive({
+    standalone: false,
     selector: '[mdcDrawerContent]',
     providers: [{provide: AbstractDrawerElement, useExisting: forwardRef(() => MdcDrawerContentDirective) }]    
 })
@@ -89,6 +93,7 @@ export class MdcDrawerContentDirective extends AbstractDrawerElement {
  * <i>temporary</i> drawer. See <code>MdcDrawerContainerDirective</code> for more information.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcDrawer]',
     providers: [{provide: AbstractDrawerElement, useExisting: forwardRef(() => MdcDrawerDirective) }]
 })
@@ -136,6 +141,7 @@ export class MdcDrawerDirective implements AfterContentInit {
  * can be opened or closed by the user, or by code.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcDrawerContainer]'
 })
 export class MdcDrawerContainerDirective implements AfterContentInit, OnDestroy {
@@ -293,11 +299,10 @@ export class MdcDrawerContainerDirective implements AfterContentInit, OnDestroy 
         return this.type;
     }
 
-    set mdcDrawerContainer(value: 'persistent' | 'temporary' | null) {
-        if (value !== 'persistent' && value !== 'temporary')
-            value = 'persistent';
-        if (value !== this.type) {
-            this.type = value;
+    set mdcDrawerContainer(value: string | null) {
+        const type = value === 'temporary' ? 'temporary' : 'persistent';
+        if (type !== this.type) {
+            this.type = type;
             this.updateType();
             this.initDrawer();
         }

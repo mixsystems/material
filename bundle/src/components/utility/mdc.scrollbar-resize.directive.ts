@@ -51,6 +51,7 @@ function destroyScrollbarResizeListener() {
  * github gist</a> for the original idea.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcScrollbarResize]'
 })
 export class MdcScrollbarResizeDirective implements OnDestroy {

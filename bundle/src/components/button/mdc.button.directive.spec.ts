@@ -1,11 +1,13 @@
 import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MdcButtonDirective } from './mdc.button.directive';
 import { booleanAttributeStyleTest, hasRipple } from '../../testutils/page.test';
 
 describe('MdcButtonDirective', () => {
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: `
           <button mdcButton [raised]="raised" [outlined]="outlined" [dense]="dense">button</button>
         `
@@ -34,7 +36,7 @@ describe('MdcButtonDirective', () => {
         const { fixture } = setup();
         const button = fixture.nativeElement.querySelector('button');
         expect(button.classList).toContain('mdc-button');
-        expect(hasRipple(button)).toBe(true, 'buttons should attach a ripple by default');
+        expect(hasRipple(button), 'buttons should attach a ripple by default').toBe(true);
     }));
 
     it('should style according to the value of the raised property', (() => {

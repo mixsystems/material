@@ -19,6 +19,7 @@ const CLASS_ICONS_WITH_TEXT_BAR = 'mdc-tab-bar--icons-with-text';
  * embedded inside an <code>mdcTabBarScroller</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTabBar]'
 })
 export class MdcTabBarDirective {

@@ -1,0 +1,45 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "analytics": false
+  },
+  "projects": {
+    "material": {
+      "projectType": "library",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "buildTarget": "material:test-build",
+            "tsConfig": "tsconfig.spec.json",
+            "browsers": [
+              "chromiumHeadless"
+            ],
+            "include": [
+              "src/**/*.spec.ts"
+            ],
+            "setupFiles": [
+              "src/testutils/setup.ts"
+            ]
+          }
+        },
+        "test-build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "tsConfig": "tsconfig.spec.json",
+            "polyfills": [
+              "zone.js"
+            ],
+            "aot": false,
+            "styles": [
+              "node_modules/material-components-web/dist/material-components-web.css"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

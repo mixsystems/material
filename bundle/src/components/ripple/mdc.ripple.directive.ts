@@ -14,6 +14,7 @@ import { MdcEventRegistry } from '../../utils/mdc.event.registry';
  * Alternatively you can set the <code>surface</code> to get a default styled ripple.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcRipple]'
 })
 export class MdcRippleDirective extends AbstractMdcRipple implements AfterContentInit, OnDestroy {

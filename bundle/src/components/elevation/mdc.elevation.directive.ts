@@ -8,6 +8,7 @@ import { AbstractMdcRipple } from '../ripple/abstract.mdc.ripple';
  * Directive for elevating an element above its surface.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcElevation]'
 })
 export class MdcElevationDirective {

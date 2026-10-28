@@ -24,6 +24,7 @@ let nextId = 1;
  * Should be used as the first child element of the <code>mdcSelect</code>.
  */
 @Directive({
+    standalone: false,
     selector: 'select[mdcSelectControl]',
     providers: [{provide: AbstractMdcInput, useExisting: forwardRef(() => MdcSelectControlDirective) }]
 })
@@ -92,6 +93,7 @@ export class MdcSelectControlDirective extends AbstractMdcInput implements OnIni
  * <code>mdcFloatingLabel</code> directive.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcSelect]'
 })
 export class MdcSelectDirective extends AbstractMdcRipple implements AfterContentInit, OnDestroy {

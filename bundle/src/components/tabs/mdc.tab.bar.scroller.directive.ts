@@ -21,6 +21,7 @@ const CLASS_SCROLLER_FRAME = 'mdc-tab-bar-scroller__scroll-frame';
  * and <code>mdcTabBarScrollerForward</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTabBarScrollerInner]'
 })
 export class MdcTabBarScrollerInnerDirective {
@@ -34,6 +35,7 @@ export class MdcTabBarScrollerInnerDirective {
  * actual icon.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTabBarScrollerBack]'
 })
 export class MdcTabBarScrollerBackDirective {
@@ -51,6 +53,7 @@ export class MdcTabBarScrollerBackDirective {
  * actual icon.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTabBarScrollerForward]'
 })
 export class MdcTabBarScrollerForwardDirective {
@@ -67,6 +70,7 @@ export class MdcTabBarScrollerForwardDirective {
  * <code>mdcTabBar</code> as child.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTabBarScrollerFrame]'
 })
 export class MdcTabBarScrollerFrameDirective implements AfterContentInit {
@@ -97,6 +101,7 @@ export class MdcTabBarScrollerFrameDirective implements AfterContentInit {
  * as children for respectively the back button, scrollable tab bar, and forward button.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTabBarScroller]'
 })
 export class MdcTabBarScrollerDirective implements AfterContentInit, OnDestroy {

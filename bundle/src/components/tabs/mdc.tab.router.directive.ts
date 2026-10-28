@@ -12,6 +12,7 @@ import { asBoolean } from '../../utils/value.utils';
 import { MdcEventRegistry } from '../../utils/mdc.event.registry';
 
 @Directive({
+    standalone: false,
     selector: '[mdcTabRouter]',
     exportAs: 'mdcTabRouter',
     providers: [{provide: AbstractMdcTabDirective, useExisting: forwardRef(() => MdcTabRouterDirective) }]

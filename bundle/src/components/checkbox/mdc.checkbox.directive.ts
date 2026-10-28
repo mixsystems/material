@@ -12,6 +12,7 @@ import { AbstractMdcRipple } from '../ripple/abstract.mdc.ripple';
  * Directive for the input element of an <code>MdcCheckboxDirective</code>.
  */
 @Directive({
+    standalone: false,
     selector: 'input[mdcCheckboxInput][type=checkbox]',
     providers: [{provide: AbstractMdcInput, useExisting: forwardRef(() => MdcCheckboxInputDirective) }]
 })
@@ -59,6 +60,7 @@ export class MdcCheckboxInputDirective extends AbstractMdcInput {
  * <a href="/material/components/form-field">mdcFormField</a>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcCheckbox]'
 })
 export class MdcCheckboxDirective extends AbstractMdcRipple implements AfterContentInit, OnDestroy {

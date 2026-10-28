@@ -10,6 +10,7 @@ import { MdcEventRegistry } from '../../utils/mdc.event.registry';
  * from Google fonts), or with <code>svg</code> elements for svg based icons.
  */
 @Directive({
+    standalone: false,
     selector: 'mdcButtonIcon'
 })
 export class MdcButtonIconDirective {
@@ -24,6 +25,7 @@ export class MdcButtonIconDirective {
  * based on the provided sass-mixins.
  */
 @Directive({
+    standalone: false,
     selector: 'button[mdcButton],a[mdcButton]',
     providers: [{provide: AbstractMdcRipple, useExisting: forwardRef(() => MdcButtonDirective) }]
 })

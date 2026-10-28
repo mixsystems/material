@@ -1,6 +1,6 @@
 import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdcSliderDirective, MdcFormsSliderDirective } from './mdc.slider.directive';
 
@@ -72,12 +72,16 @@ describe('MdcSliderDirective', () => {
     }
 
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: template
     })
     class TestComponent extends AbstractTestComponent {
     }
 
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: templateForms
     })
     class FormsTestComponent extends AbstractTestComponent {
@@ -98,6 +102,8 @@ describe('MdcSliderDirective', () => {
     }
 
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: template
     })
     class UninitializedTestComponent {
@@ -136,7 +142,7 @@ describe('MdcSliderDirective', () => {
 
     function testValueAndRangeChanges(testComponentType: any, withForms: boolean) {
         const { fixture } = setup(testComponentType, withForms);
-        const testComponent = fixture.debugElement.injector.get(testComponentType);
+        const testComponent: any = fixture.debugElement.injector.get(testComponentType);
         const slider: HTMLElement = fixture.nativeElement.querySelector('.mdc-slider');
 
         testComponent.clear();
@@ -202,7 +208,7 @@ describe('MdcSliderDirective', () => {
 
     function testDisabling(testComponentType: any, withForms: boolean) {
         const { fixture } = setup(testComponentType, withForms);
-        const testComponent = fixture.debugElement.injector.get(testComponentType);
+        const testComponent: any = fixture.debugElement.injector.get(testComponentType);
         const slider: HTMLElement = fixture.nativeElement.querySelector('.mdc-slider');
 
         expect(slider.getAttribute('aria-disabled')).toBe('false');

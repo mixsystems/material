@@ -29,6 +29,7 @@ let nextId = 1;
  * when you want to have a leading icon on the text-field).
  */
 @Directive({
+    standalone: false,
     selector: 'input[mdcTextFieldInput], textarea[mdcTextFieldInput]',
     providers: [{provide: AbstractMdcInput, useExisting: forwardRef(() => MdcTextFieldInputDirective) }]
 })
@@ -155,6 +156,7 @@ export class MdcTextFieldInputDirective extends AbstractMdcInput implements OnIn
  * for a leading icon, or as the last child for a trailing icon.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTextFieldIcon]'
 })
 export class MdcTextFieldIconDirective {
@@ -192,6 +194,7 @@ export class MdcTextFieldIconDirective {
  * <code>mdcHelperText</code>. See the examples for hints on how to do this.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTextFieldHelperText]',
     exportAs: 'mdcHelperText'
 })
@@ -226,7 +229,7 @@ export class MdcTextFieldHelperTextDirective {
      * If set to a value other than false, the helper text is treated as a
      * validation message, and only shown when the input is invalid.
      */
-    @Input() set validation(value: boolean) {
+    @Input() set validation(value: any) {
         this._validation = asBoolean(value);
     }
 
@@ -235,7 +238,7 @@ export class MdcTextFieldHelperTextDirective {
      * Otherwise the helper text will only be shown when the input has focus
      * (or when <code>validation</code> is set, when the input is invalid).
      */
-    @Input() set persistent(value: boolean) {
+    @Input() set persistent(value: any) {
         this._persistent = asBoolean(value);
     }
 }
@@ -246,6 +249,7 @@ export class MdcTextFieldHelperTextDirective {
  * elements.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTextField]',
     providers: [{provide: AbstractMdcRipple, useExisting: forwardRef(() => MdcTextFieldDirective) }]
 })

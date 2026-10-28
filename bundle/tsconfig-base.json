@@ -1,22 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "es2015",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
+    "strict": false,
     "experimentalDecorators": true,
-    "sourceMap": true,
-    "noEmitHelpers": true,
+    "useDefineForClassFields": false,
     "importHelpers": true,
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "target": "ES2022",
+    "lib": ["ES2022", "dom"],
+    "types": [],
     "skipLibCheck": true,
-    "declaration": true,
-    "lib": [
-      "es2015",
-      "dom"
-    ],
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "sourceMap": true,
+    "declaration": true
+  },
+  "angularCompilerOptions": {
+    "preserveWhitespaces": false
   },
   "compileOnSave": false,
   "buildOnSave": false

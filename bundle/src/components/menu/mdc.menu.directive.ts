@@ -37,6 +37,7 @@ export interface MdcMenuSelection {
  * <code>position: relative; overflow: visible;</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcMenuAnchor]',
     exportAs: 'mdcMenuAnchor'
 })
@@ -53,6 +54,7 @@ export class MdcMenuAnchorDirective {
  * contains the menu items (and possible separators).
  */
 @Directive({
+    standalone: false,
     selector: '[mdcMenu]'
 })
 export class MdcMenuDirective implements AfterContentInit, OnDestroy {
@@ -281,7 +283,7 @@ export class MdcMenuDirective implements AfterContentInit, OnDestroy {
         return this._openFrom;
     }
 
-    set openFrom(val: 'tl' | 'tr' | 'bl' | 'br' | null) {
+    set openFrom(val: string | null) {
         if (val === 'br' || val === 'bl' || val === 'tr' || val === 'tl')
             this._openFrom = val;
         else

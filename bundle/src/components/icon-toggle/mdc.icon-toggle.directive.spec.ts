@@ -1,11 +1,13 @@
 import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MdcIconToggleDirective, MdcIconToggleIconDirective } from './mdc.icon-toggle.directive';
 import { booleanAttributeStyleTest, hasRipple } from '../../testutils/page.test';
 
 describe('MdcIconToggleDirective standalone', () => {
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: `
             <i mdcIconToggle
                 class="material-icons"
@@ -97,6 +99,8 @@ describe('MdcIconToggleDirective standalone', () => {
 
 describe('MdcIconToggleDirective with MdcIconToggleIconDirective', () => {
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: `
             <span id="icon" mdcIconToggle
                 labelOn="Do not like"
@@ -149,7 +153,7 @@ describe('MdcIconToggleDirective with MdcIconToggleIconDirective', () => {
         tick();
         
         expect(iconToggle._elm.nativeElement.getAttribute('aria-label')).toBe('Open envelope');
-        expect(icon.classList.contains('fa-heart')).toBe(false, 'actual classes: ' + icon.classList);
+        expect(icon.classList.contains('fa-heart'), 'actual classes: ' + icon.classList).toBe(false);
         expect(icon.classList).toContain('fa-envelope');
         expect(icon.classList).toContain('fa');
     }));
@@ -159,17 +163,17 @@ describe('MdcIconToggleDirective with MdcIconToggleIconDirective', () => {
         const iconToggle = fixture.debugElement.query(By.directive(MdcIconToggleDirective)).injector.get(MdcIconToggleDirective);
         const icon = fixture.nativeElement.querySelector('i.fa');
         
-        expect(icon.classList.contains('fa-heart')).toBe(true, icon.classList);
-        expect(icon.classList.contains('fa-heart-o')).toBe(false, icon.classList);
+        expect(icon.classList.contains('fa-heart'), icon.classList).toBe(true);
+        expect(icon.classList.contains('fa-heart-o'), icon.classList).toBe(false);
         
         icon.click(); tick(); fixture.detectChanges();
         
-        expect(icon.classList.contains('fa-heart')).toBe(false, icon.classList);
-        expect(icon.classList.contains('fa-heart-o')).toBe(true, icon.classList);
+        expect(icon.classList.contains('fa-heart'), icon.classList).toBe(false);
+        expect(icon.classList.contains('fa-heart-o'), icon.classList).toBe(true);
         
         icon.click(); tick(); fixture.detectChanges();
 
-        expect(icon.classList.contains('fa-heart')).toBe(true, icon.classList);
-        expect(icon.classList.contains('fa-heart-o')).toBe(false, icon.classList);
+        expect(icon.classList.contains('fa-heart'), icon.classList).toBe(true);
+        expect(icon.classList.contains('fa-heart-o'), icon.classList).toBe(false);
     }));
 });

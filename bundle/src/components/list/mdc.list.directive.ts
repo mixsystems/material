@@ -11,6 +11,7 @@ import { MdcEventRegistry } from '../../utils/mdc.event.registry';;
  * where the divider is used).
  */
 @Directive({
+    standalone: false,
     selector: '[mdcListDivider]',
 })
 export class MdcListDividerDirective {
@@ -60,6 +61,7 @@ export class MdcListDividerDirective {
  * This directive should be used for the direct children of a <code>MdcListDirective</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcListItem]'
 })
 export class MdcListItemDirective extends AbstractMdcRipple implements AfterContentInit, OnDestroy {
@@ -168,6 +170,7 @@ export class MdcListItemDirective extends AbstractMdcRipple implements AfterCont
  * "two line" mode.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcListItemText]'
 })
 export class MdcListItemTextDirective {
@@ -180,6 +183,7 @@ export class MdcListItemTextDirective {
  * Directive for the secondary text of an item with "two line list" styling.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcListItemSecondaryText]',
 })
 export class MdcListItemSecondaryTextDirective {
@@ -193,6 +197,7 @@ export class MdcListItemSecondaryTextDirective {
  * This directive, if used, should be the child of an <code>MdcListItemDirective</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcListItemGraphic]',
 })
 export class MdcListItemGraphicDirective {
@@ -206,6 +211,7 @@ export class MdcListItemGraphicDirective {
  * This directive, if used, should be the child of an <code>MdcListItemDirective</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcListItemMeta]',
 })
 export class MdcListItemMetaDirective {
@@ -226,6 +232,7 @@ export enum MdcListFunction {
  * <code>MdcMenuDirective</code>, or in a <code>MdcSelectDirective</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcList]',
 })
 export class MdcListDirective implements AfterContentInit {
@@ -325,6 +332,7 @@ export class MdcListDirective implements AfterContentInit {
  * Directive for a header inside a list group (<code>mdcListGroup</code>) directive.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcListGroupSubHeader]'
 })
 export class MdcListGroupSubHeaderDirective {
@@ -341,6 +349,7 @@ export class MdcListGroupSubHeaderDirective {
  * and <code>mdcList</code> directives.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcListGroup]'
 })
 export class MdcListGroupDirective {

@@ -17,6 +17,7 @@ import { MdcDialogAdapter } from './mdc.dialog.adapter';
  * directive.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcDialogHeaderTitle]'
 })
 export class MdcDialogHeaderTitleDirective {
@@ -30,6 +31,7 @@ export class MdcDialogHeaderTitleDirective {
  * <code>mdcDialogHeaderTitle</code> directive.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcDialogHeader]'
 })
 export class MdcDialogHeaderDirective {
@@ -42,6 +44,7 @@ export class MdcDialogHeaderDirective {
  * directive.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcDialogBody]'
 })
 export class MdcDialogBodyDirective {
@@ -78,6 +81,7 @@ export class MdcDialogBodyDirective {
  * directive.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcDialogFooter]',
 })
 export class MdcDialogFooterDirective implements AfterContentInit {
@@ -111,6 +115,7 @@ export class MdcDialogFooterDirective implements AfterContentInit {
  * instead, add the <code>mdcFocusInitial</code> directive to that element.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcDialogAccept]',
     providers: [{provide: AbstractMdcFocusInitial, useExisting: forwardRef(() => MdcDialogAcceptDirective) }]
 })
@@ -129,6 +134,7 @@ export class MdcDialogAcceptDirective extends AbstractMdcFocusInitial {
  * trigger the <code>cancel</code> event on the dialog.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcDialogCancel]'
 })
 export class MdcDialogCancelDirective {
@@ -143,6 +149,7 @@ export class MdcDialogCancelDirective {
  * page content when the dialog is opened. This guides user attention to the dialog.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcDialogBackdrop]'
 })
 export class MdcDialogBackdropDirective {
@@ -155,6 +162,7 @@ export class MdcDialogBackdropDirective {
  * and <code>mdcDialogFooter</code> directives.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcDialogSurface]'
 })
 export class MdcDialogSurfaceDirective {
@@ -174,6 +182,7 @@ export class MdcDialogSurfaceDirective {
  * as well.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcDialog]',
     exportAs: 'mdcDialog'
 })

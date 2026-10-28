@@ -1,16 +1,20 @@
 {
     "scripts": {
-        "prepare-release": "lerna publish --skip-git --skip-npm --conventional-commits",
-        "prepare-minor-release": "lerna publish --skip-git --skip-npm --conventional-commits --cd-version minor",
-        "prepare-patch-release": "lerna publish --skip-git --skip-npm --conventional-commits --cd-version patch",
+        "prepare": "husky",
+        "prepare-release": "lerna version --conventional-commits --no-git-tag-version --no-push",
+        "prepare-minor-release": "lerna version minor --conventional-commits --no-git-tag-version --no-push",
+        "prepare-patch-release": "lerna version patch --conventional-commits --no-git-tag-version --no-push",
         "commit-release": "node tools/commit-release.js",
         "commitmsg": "commitlint -e"
     },
     "devDependencies": {
-        "@commitlint/cli": "^7.0.0",
-        "@commitlint/config-lerna-scopes": "^7.0.0",
-        "husky": "^0.14.3",
-        "lerna": "^2.11.0",
-        "simple-git": "^1.96.0"
+        "@commitlint/cli": "^21.2.4",
+        "@commitlint/config-lerna-scopes": "^21.2.0",
+        "husky": "^9.1.7",
+        "lerna": "^10.1.1",
+        "simple-git": "^4.0.2"
+    },
+    "overrides": {
+        "undici@>=7.0.0 <7.30.1": "^7.30.1"
     }
 }

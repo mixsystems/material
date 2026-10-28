@@ -12,6 +12,7 @@ import { MdcEventRegistry } from '../../utils/mdc.event.registry';
 let nextId = 1;
 
 @Directive({
+    standalone: false,
     selector: 'input[mdcFormFieldInput], textarea[mdcFormFieldInput]',
     providers: [{provide: AbstractMdcInput, useExisting: forwardRef(() => MdcFormFieldInputDirective) }]
 })
@@ -43,6 +44,7 @@ export class MdcFormFieldInputDirective extends AbstractMdcInput {
 }
 
 @Directive({
+    standalone: false,
     selector: 'label[mdcFormFieldLabel]',
     providers: [{provide: AbstractMdcLabel, useExisting: forwardRef(() => MdcFormFieldLabelDirective) }]
 })
@@ -55,6 +57,7 @@ export class MdcFormFieldLabelDirective extends AbstractMdcLabel {
 }
 
 @Directive({
+    standalone: false,
     selector: '[mdcFormField]'
 })
 export class MdcFormFieldDirective implements AfterContentInit, OnDestroy {

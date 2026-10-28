@@ -1,6 +1,6 @@
 import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TOP_APP_BAR_DIRECTIVES, MdcTopAppBarDirective } from './mdc.top-app-bar.directive';
 
 const template = `
@@ -29,6 +29,8 @@ const template = `
 
 describe('MdcTopAppBarDirective', () => {
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: template
     })
     class TestComponent {
@@ -196,6 +198,8 @@ describe('MdcTopAppBarDirective', () => {
     }));
 
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: `<div id="viewport" #viewport
             style="position: relative; margin: 0 auto; width:50%; height: 350px; padding: 50px; overflow-y: auto">
           <header mdcTopAppBar="short" [viewport]="viewport" [fixedAdjust]="fixedAdjust">

@@ -33,6 +33,7 @@ interface MdcSliderFoundationInterface {
  * DOM children.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcSlider]'
 })
 export class MdcSliderDirective implements AfterContentInit, AfterViewInit, OnChanges, OnDestroy {
@@ -448,6 +449,7 @@ export class MdcSliderDirective implements AfterContentInit, AfterViewInit, OnCh
  * icon toggles, e.g. binding to <code>[(ngModel)]</code>, form validation, etc.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcSlider][formControlName],[mdcSlider][formControl],[mdcSlider][ngModel]',
     providers: [
         {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => MdcFormsSliderDirective), multi: true}

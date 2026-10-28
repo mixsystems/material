@@ -23,6 +23,7 @@ import { MdcEventRegistry } from '../../utils/mdc.event.registry';
  * Design Icons from Google), this directive is not necessary.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcIconButtonIcon]'
 })
 export class MdcIconButtonIconDirective {
@@ -37,6 +38,7 @@ export class MdcIconButtonIconDirective {
  * <code>mdcIconButton</code>, and give it the <code>mdcIconButtonIcon</code> directive.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcIconButton]:not([iconOn])',
     providers: [
         {provide: AbstractMdcRipple, useExisting: forwardRef(() => MdcIconButtonDirective) },
@@ -88,6 +90,7 @@ export class MdcIconButtonDirective extends AbstractMdcIcon implements AfterCont
  * then update the child element with the correct icon if it is toggled.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcIconButton][iconOn]',
     providers: [
         {provide: AbstractMdcRipple, useExisting: forwardRef(() => MdcIconButtonToggleDirective) },
@@ -329,6 +332,7 @@ export class MdcIconButtonToggleDirective extends AbstractMdcIcon implements Aft
  * icon toggle buttons, e.g. binding to <code>[(ngModel)]</code>, form validation, etc.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcIconButton][iconOn][formControlName],[mdcIconButton][iconOn][formControl],[mdcIconButton][iconOn][ngModel]',
     providers: [
         {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => MdcFormsIconButtonDirective), multi: true}

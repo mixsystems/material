@@ -9,6 +9,7 @@ import { MdcEventRegistry } from '../../utils/mdc.event.registry';
  * (<code>MdcFabDirective</code>).
  */
 @Directive({
+    standalone: false,
     selector: '[mdcFabIcon]'
 })
 export class MdcFabIconDirective {
@@ -20,6 +21,7 @@ export class MdcFabIconDirective {
  * an icon element with the <code>MdcFabIconDirective</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcFab]',
     providers: [{provide: AbstractMdcRipple, useExisting: forwardRef(() => MdcFabDirective) }]
 })

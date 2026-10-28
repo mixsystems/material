@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FOCUS_TRAP_DIRECTIVES, MdcFocusInitialDirective, MdcFocusTrapDirective } from './mdc.focus-trap.directive';
@@ -6,6 +6,8 @@ import { cancelledClick, simulateEscape } from '../../testutils/page.test';
 
 describe('MdcFocusTrapDirective', () => {
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: `
             <a id="o1" href="javascript:void(0)">outside 1</a>
             <div mdcFocusTrap>
@@ -152,6 +154,8 @@ describe('MdcFocusTrapDirective', () => {
 
 describe('MdcFocusInitialDirective', () => {
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: `
             <a id="o1" href="javascript:void(0)">outside 1</a>
             <div mdcFocusTrap>

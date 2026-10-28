@@ -19,6 +19,7 @@ import { MdcEventRegistry } from '../../utils/mdc.event.registry';
  * this directive is not necessary.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcIconToggleIcon]'
 })
 export class MdcIconToggleIconDirective {
@@ -34,6 +35,7 @@ export class MdcIconToggleIconDirective {
  * ripple styles).
  */
 @Directive({
+    standalone: false,
     selector: '[mdcIconToggle]',
     providers: [{provide: AbstractMdcIcon, useExisting: forwardRef(() => MdcIconToggleDirective) }]
 })
@@ -321,6 +323,7 @@ export class MdcIconToggleDirective extends AbstractMdcIcon implements AfterCont
  * icon toggles, e.g. binding to <code>[(ngModel)]</code>, form validation, etc.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcIconToggle][formControlName],[mdcIconToggle][formControl],[mdcIconToggle][ngModel]',
     providers: [
         {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => MdcFormsIconToggleDirective), multi: true}

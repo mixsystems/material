@@ -1,0 +1,19 @@
+{
+  "name": "mdc-sass-patch",
+  "private": true,
+  "description": "Makes material-components-web 0.37 SCSS compile identically on modern Dart Sass",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "verify": "node verify.mjs"
+  },
+  "devDependencies": {
+    "material-components-web": "0.37.1",
+    "postcss": "^8.5.6",
+    "postcss-scss": "^4.0.9",
+    "sass": "^1.106.1",
+    "sass-embedded": "^1.106.1",
+    "sass-migrator": "^2.6.1",
+    "sass-reference": "npm:sass@1.91.0"
+  }
+}

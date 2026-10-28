@@ -11,6 +11,7 @@ import { MdcEventRegistry } from '../../utils/mdc.event.registry';
  * will try to move focus to this element when the focus trap is activated.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcFocusInitial]',
     providers: [{provide: AbstractMdcFocusInitial, useExisting: forwardRef(() => MdcFocusInitialDirective) }]
 })
@@ -54,6 +55,7 @@ let activeTrap: FocusTrapHandleImpl = null;
  * child element of the focus trap.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcFocusTrap]',
     providers: [{provide: AbstractMdcFocusTrap, useExisting: forwardRef(() => MdcFocusTrapDirective) }]
 })

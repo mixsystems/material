@@ -1,11 +1,13 @@
 import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { MdcChipSetDirective, MdcChipDirective, MdcChipIconDirective, CHIP_DIRECTIVES } from './mdc.chip.directive';
 import { booleanAttributeStyleTest, hasRipple } from '../../testutils/page.test';
 
 describe('MdcChipDirective', () => {
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: `
             <div [mdcChipSet]="type" id="set">
                 <div *ngFor="let chip of chips; let i = index" mdcChip
@@ -310,6 +312,8 @@ describe('MdcChipDirective', () => {
     }));
 
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: `
             <div [mdcChipSet]="type" id="set">
                 <div mdcChip>
@@ -402,6 +406,8 @@ describe('MdcChipDirective', () => {
     }));
 
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: `
             <div mdcChipSet>
                 <div mdcChip>

@@ -18,6 +18,7 @@ import { MdcEventRegistry } from '../../utils/mdc.event.registry';
  * to the id of the parent <code>mdcInput</code>.
  */
 @Directive({
+    standalone: false,
     selector: 'label[mdcFloatingLabel]',
     providers: [{provide: AbstractMdcLabel, useExisting: forwardRef(() => MdcFloatingLabelDirective) }]
 })

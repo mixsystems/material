@@ -17,6 +17,7 @@ import { Subscription } from 'rxjs';
  * icon must implement the <code>remove</code> event.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcChipIcon]'
 })
 export class MdcChipIconDirective {
@@ -63,6 +64,7 @@ export class MdcChipIconDirective {
  * Directive for the text of an <code>mdcChip</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcChipText]'
 })
 export class MdcChipTextDirective {
@@ -75,6 +77,7 @@ export class MdcChipTextDirective {
  * Directive for a chip. Chips must be child elements of an <code>mdcChipSet</code>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcChip]'
 })
 export class MdcChipDirective extends AbstractMdcRipple implements AfterContentInit, OnDestroy {
@@ -330,6 +333,7 @@ export class MdcChipDirective extends AbstractMdcRipple implements AfterContentI
  * Directive for a chip-set (a collection of <code>mdcChip</code>).
  */
 @Directive({
+    standalone: false,
     selector: '[mdcChipSet]'
 })
 export class MdcChipSetDirective implements AfterContentInit, OnDestroy {

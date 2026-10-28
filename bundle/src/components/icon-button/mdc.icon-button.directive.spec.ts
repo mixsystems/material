@@ -1,12 +1,14 @@
 import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { FormsModule, NgModel } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { MdcIconButtonIconDirective, MdcIconButtonDirective, MdcIconButtonToggleDirective, MdcFormsIconButtonDirective } from './mdc.icon-button.directive';
 import { booleanAttributeStyleTest, hasRipple } from '../../testutils/page.test';
 
 describe('mdcIconButton as action button', () => {
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: `
             <button mdcIconButton class="material-icons" [disabled]="disabled" (click)="action()"></button>
         `
@@ -61,6 +63,8 @@ describe('mdcIconButton as action button', () => {
 
 describe('mdcIconButton as toggle', () => {
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: `
             <button mdcIconButton
                 class="material-icons"
@@ -192,6 +196,8 @@ describe('mdcIconButton as toggle', () => {
     }));
 
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: `
             <button mdcIconButton
                 class="fa"
@@ -229,6 +235,8 @@ describe('mdcIconButton as toggle', () => {
 
 describe('mdcIconButton with FormsModule', () => {
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: `
             <button mdcIconButton #ngModel="ngModel"
                 class="material-icons"
@@ -306,6 +314,8 @@ describe('mdcIconButton with FormsModule', () => {
 
 describe('MdcIconButton with nested MdcIconButtonIcon', () => {
     @Component({
+        standalone: false,
+        changeDetection: ChangeDetectionStrategy.Eager,
         template: `
             <button id="icon" mdcIconButton
                 labelOn="Do not like"
@@ -356,7 +366,7 @@ describe('MdcIconButton with nested MdcIconButtonIcon', () => {
         fixture.detectChanges();
         
         expect(iconToggle._elm.nativeElement.getAttribute('aria-label')).toBe('Open envelope');
-        expect(icon.classList.contains('fa-heart')).toBe(false, 'actual classes: ' + icon.classList);
+        expect(icon.classList.contains('fa-heart'), 'actual classes: ' + icon.classList).toBe(false);
         expect(icon.classList).toContain('fa-envelope');
         expect(icon.classList).toContain('fa');
     }));
@@ -366,17 +376,17 @@ describe('MdcIconButton with nested MdcIconButtonIcon', () => {
         const iconToggle = fixture.debugElement.query(By.directive(MdcIconButtonToggleDirective)).injector.get(MdcIconButtonToggleDirective);
         const icon = fixture.nativeElement.querySelector('i.fa');
         
-        expect(icon.classList.contains('fa-heart')).toBe(true, icon.classList);
-        expect(icon.classList.contains('fa-heart-o')).toBe(false, icon.classList);
+        expect(icon.classList.contains('fa-heart'), icon.classList).toBe(true);
+        expect(icon.classList.contains('fa-heart-o'), icon.classList).toBe(false);
         
         icon.click(); fixture.detectChanges();
         
-        expect(icon.classList.contains('fa-heart')).toBe(false, icon.classList);
-        expect(icon.classList.contains('fa-heart-o')).toBe(true, icon.classList);
+        expect(icon.classList.contains('fa-heart'), icon.classList).toBe(false);
+        expect(icon.classList.contains('fa-heart-o'), icon.classList).toBe(true);
         
         icon.click(); fixture.detectChanges();
 
-        expect(icon.classList.contains('fa-heart')).toBe(true, icon.classList);
-        expect(icon.classList.contains('fa-heart-o')).toBe(false, icon.classList);
+        expect(icon.classList.contains('fa-heart'), icon.classList).toBe(true);
+        expect(icon.classList.contains('fa-heart-o'), icon.classList).toBe(false);
     }));
 });

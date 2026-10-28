@@ -27,8 +27,8 @@ export function booleanAttributeStyleTest(
     booleanAttributeVerify(
         (value) => {component[componentProperty] = value; fixture.detectChanges(); },
         (expected) => {
-            expect(directive[directiveProperty]).toBe(expected, directiveProperty);
-            expect(directive._elm.nativeElement.classList.contains(directiveStyle)).toBe(expected, directiveStyle);
+            expect(directive[directiveProperty], directiveProperty).toBe(expected);
+            expect(directive._elm.nativeElement.classList.contains(directiveStyle), directiveStyle).toBe(expected);
         }
     )
 }

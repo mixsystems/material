@@ -1,5 +1,6 @@
 const {readFileSync} = require('fs');
-const git = require('simple-git/promise')();
+const {simpleGit} = require('simple-git');
+const git = simpleGit();
 const versionFile = 'lerna.json';
 const version = JSON.parse(readFileSync(versionFile, 'utf8'))['version'];
 
@@ -52,7 +53,7 @@ async function tagRelease () {
     console.log('tagging version v' + version);
     await git.tag(['-a', 'v' + version, '-m', 'v' + version]);
     await git.push();
-    await git.push(undefined, 'v' + version);
+    await git.push('origin', 'v' + version);
 }
 
 tagRelease().then(

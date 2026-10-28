@@ -10,3 +10,6 @@
 /site/node_modules/
 /.project
 /tmp
+/bundle/.angular/
+/bundle/*.tgz
+/bundle/.vitest/

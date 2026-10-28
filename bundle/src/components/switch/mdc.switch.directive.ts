@@ -8,6 +8,7 @@ import { asBoolean } from '../../utils/value.utils';
  * Directive for the input element of an <code>MdcSwitchDirective</code>.
  */
 @Directive({
+    standalone: false,
     selector: 'input[mdcSwitchInput][type=checkbox]',
     providers: [{provide: AbstractMdcInput, useExisting: forwardRef(() => MdcSwitchInputDirective) }]
 })
@@ -55,6 +56,7 @@ export class MdcSwitchInputDirective extends AbstractMdcInput {
  * <a href="/material/components/form-field">mdcFormField</a>.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcSwitch]'
 })
 export class MdcSwitchDirective implements AfterContentInit {

@@ -15,6 +15,7 @@ import { MdcToolbarFixedAdjustDirective } from '../../material.module';
  * the page.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTopAppBarRow]'
 })
 export class MdcTopAppBarRowDirective {
@@ -30,6 +31,7 @@ export class MdcTopAppBarRowDirective {
  * are allowed per row.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTopAppBarSection]'
 })
 export class MdcTopAppBarSectionDirective {
@@ -67,6 +69,7 @@ export class MdcTopAppBarSectionDirective {
  * The directive should be a child of an element with the <code>mdcTopAppBarSection</code> directive.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTopAppBarTitle]'
 })
 export class MdcTopAppBarTitleDirective {
@@ -84,6 +87,7 @@ export class MdcTopAppBarTitleDirective {
  * or drawer.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTopAppBarNavIcon]'
 })
 export class MdcTopAppBarNavIconDirective {
@@ -100,6 +104,7 @@ export class MdcTopAppBarNavIconDirective {
  * directive.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTopAppBarAction]'
 })
 export class MdcTopAppBarActionDirective {
@@ -119,6 +124,7 @@ export class MdcTopAppBarActionDirective {
  * embedded inside <code>mdcTopAppBarRow</code> rows.
  */
 @Directive({
+    standalone: false,
     selector: '[mdcTopAppBar]'
 })
 export class MdcTopAppBarDirective implements AfterContentInit, OnDestroy {
@@ -267,11 +273,10 @@ export class MdcTopAppBarDirective implements AfterContentInit, OnDestroy {
         return this._type;
     }
 
-    set mdcTopAppBar(val) {
-        if (val !== 'short' && val !== 'fixed')
-            val = 'default';
-        if (val !== this._type) {
-            this._type = val;
+    set mdcTopAppBar(val: string) {
+        const type = val === 'short' || val === 'fixed' ? val : 'default';
+        if (type !== this._type) {
+            this._type = type;
             this.foundationReInit();
         }
     }
