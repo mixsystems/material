@@ -18,28 +18,20 @@ compile the migrated `if()` syntax.
 
 ## Release
 
-The patched packages, `@blox/material` and `@angular/flex-layout` are uploaded as assets of one
-GitHub release. They reference each other by that release's download URL (`@blox/material` →
-`material-components-web` → `@material/*`). So the URL is a build input, and an application only
-replaces its two dependencies. From `forks/material`:
-
-```sh
-export RELEASE_URL=https://github.com/<owner>/<repo>/releases/download/<tag>/
-(cd mdc-sass && npm ci && npm run build && npm run verify)
-(cd bundle && npm ci && npm run build)
-(cd ../flex-layout && npm ci && npm run build)
-gh release create <tag> --repo <owner>/<repo> mdc-sass/dist/*.tgz bundle/*.tgz ../flex-layout/dist/*.tgz
-```
+`../build.sh` builds the patched packages and `@blox/material`, then publishes them as tag
+`dist-<version>` of the repository, a commit that holds only the tarballs. npm downloads them from
+`https://raw.githubusercontent.com/<owner>/<repo>/dist-<version>/`. The packages reference each other
+by that URL (`@blox/material` → `material-components-web` → `@material/*`), so it is a build input
+(`RELEASE_URL`), and an application only replaces its dependency:
 
 ```json
-"@angular/flex-layout": "https://github.com/<owner>/<repo>/releases/download/<tag>/angular-flex-layout-10.0.0-beta.32-ng22.0.tgz",
-"@blox/material": "https://github.com/<owner>/<repo>/releases/download/<tag>/blox-material-0.17.0-ng22.0.tgz"
+"@blox/material": "https://raw.githubusercontent.com/mixsystems/material/dist-0.17.0-ng22.0/blox-material-0.17.0-ng22.0.tgz"
 ```
 
-Every rebuild needs a new tag (never replace assets of a published release: `npm ci` checks the
-integrity hashes in the lockfile). If `SUFFIX` in `build.mjs` changes, update the
+Every build needs a new `version` in `bundle/package.json`. Never replace a published tag: `npm ci`
+checks the integrity hashes in the lockfile. If `SUFFIX` in `build.mjs` changes, update the
 `material-components-web` file name in `bundle/package.json`'s `build` script too. The repository must
-be public: npm can't download private release assets.
+be public: npm can't download from a private one.
 
 `verify` compiles the full bundle (default and themed) and every `mdc-*.scss` with the latest `sass`
 and `sass-embedded` on the patched sources, and with Sass 1.91 on the originals. It fails unless the
